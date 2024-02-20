@@ -1,7 +1,10 @@
-# BUCLE FOR
+# BUCLE FOR y FUNCIONES
+
+# =================BUCLE FOR=================
+
 nombres = ["Tito", "Juan", "Pepe", "Martina", "Luis"]
 
-#POr cada elemento "nombre" en la lista "nombres"...
+#Por cada elemento "nombre" en la lista "nombres"...
 for nombre in nombres:
     print(nombre)
 
@@ -52,4 +55,19 @@ print("................")
 for dato in persona1.items():
     for elem in dato:
         print(elem)
+
+# =================FUNCIONES=================
+
+def sumar_iva(precio, porIva = 1.21):
+    print(precio*porIva)
+
+
+sumar_iva(2500,1)
+sumar_iva(1090)
+
+
+# ALGORITMOS. Son un conjunto de instrucciones que reciben info del exterior, la procesas y luego devuelven el resultado del proceso
+    # 1. ENTRADA DE DATOS
+    # 2. PROCESAMIENTO DE DATOS
+    # 3. RETORNO DE DATOS
 
