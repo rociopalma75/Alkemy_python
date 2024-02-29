@@ -78,12 +78,18 @@ i1 = Instrumento("122AA", 12000,TipoInstrumento.CAT1.value)
 i2 = Instrumento("120AA", 45000, TipoInstrumento.CAT2.value)
 i3 = Instrumento("121AA", 45200, TipoInstrumento.CAT3.value)
 i4 = Instrumento("125AA", 45400, TipoInstrumento.CAT1.value)
+i5 = Instrumento("125AB", 25400, TipoInstrumento.CAT2.value)
+i6 = Instrumento("125AC", 35400, TipoInstrumento.CAT2.value)
+i7 = Instrumento("125AD", 15400, TipoInstrumento.CAT3.value)
 
 s1 = Sucursal("Sucursal 1")
 s2 = Sucursal("Sucursal 2")
 
 s1.agregarInstrumentos(i1)
 s1.agregarInstrumentos(i2)
+s1.agregarInstrumentos(i5)
+s1.agregarInstrumentos(i6)
+s1.agregarInstrumentos(i7)
 s2.agregarInstrumentos(i3)
 s2.agregarInstrumentos(i4)
 
