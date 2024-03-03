@@ -16,14 +16,14 @@ class Fabrica:
         for sucursal in self.sucursales:
             print(f'SUCURSAL: {sucursal.nombre}')
             for instrumento in sucursal.instrumentos:
-                mostrarInstrumento(instrumento)
+                instrumento.mostrarInstrumento()
             
     def instrumentosPorTipo(self, tipoInstrumento):
         for sucursal in self.sucursales:
             print(f'SUCURSAL: {sucursal.nombre}')
             for instrumento in sucursal.instrumentos:
                 if instrumento.tipo == tipoInstrumento:
-                    mostrarInstrumento(instrumento)
+                    instrumento.mostrarInstrumento()
 
     def borrarInstrumento(self, idInstrumento):
         for sucursal in self.sucursales:
@@ -34,31 +34,8 @@ class Fabrica:
     def porcPorTiposInstrumento(self, nombreSucursal):
         for sucursal in self.sucursales:
             if sucursal.nombre == nombreSucursal:
-                calcularPorcInstrumentos(sucursal.instrumentos)
-
-def mostrarInstrumento(instrumento):
-    print(f'Id: {instrumento.id}')
-    print(f'Precio: {instrumento.precio}')
-    print(f'Tipo: {instrumento.tipo}')
-    print(".........")
-
-def calcularPorcInstrumentos(instrumentosSucursal):
-    cantidadInstrumentos = len(instrumentosSucursal)
-    contadorViento = 0
-    contadorCuerda = 0
-    contadorPercusion = 0
-
-    for instrumento in instrumentosSucursal:
-        if instrumento.tipo == TipoInstrumento.CAT1.value:
-            contadorViento += 1
-        elif instrumento.tipo == TipoInstrumento.CAT2.value:
-            contadorCuerda += 1
-        else:
-            contadorPercusion+= 1
-    
-    print(f'Porcentaje: Viento: {(contadorViento/cantidadInstrumentos)*100}')
-    print(f'Porcentaje: Cuerda: {(contadorCuerda/cantidadInstrumentos)*100}')
-    print(f'Porcentaje: Percusion: {(contadorPercusion/cantidadInstrumentos)*100}')
+                sucursal.calcularPorcInstrumentos()
+                break
 
 class Sucursal():
     def __init__(self, nombre):
@@ -67,12 +44,33 @@ class Sucursal():
 
     def agregarInstrumentos(self, instrumento):
         self.instrumentos.append(instrumento)
+    
+    def calcularPorcInstrumentos(self):
+        cantidadInstrumentos = len(self.instrumentos)
+        contadorViento = 0
+        contadorCuerda = 0
+        contadorPercusion = 0
+        
+        for instrumento in self.instrumentos:
+            if instrumento.tipo == TipoInstrumento.CAT1.value:
+                contadorViento += 1
+            elif instrumento.tipo == TipoInstrumento.CAT2.value:
+                contadorCuerda += 1
+            else:
+                contadorPercusion += 1
+        
+        print(f'Porcentaje de Viento: %{(contadorViento/cantidadInstrumentos)*100}')
+        print(f'Porcentaje de Cuerda: %{(contadorCuerda/cantidadInstrumentos)*100}')
+        print(f'Porcentaje de Percusion: %{(contadorPercusion/cantidadInstrumentos)*100}')
 
 class Instrumento():
     def __init__(self, id, precio, tipo):
         self.id = id
         self.precio = precio
         self.tipo = tipo
+    
+    def mostrarInstrumento(self):
+        print(f'ID: {self.id} - Precio: ${self.precio} - Tipo: {self.tipo}')
 
 i1 = Instrumento("122AA", 12000,TipoInstrumento.CAT1.value)
 i2 = Instrumento("120AA", 45000, TipoInstrumento.CAT2.value)
@@ -97,8 +95,24 @@ f = Fabrica()
 f.agregarSucursal(s1)
 f.agregarSucursal(s2)
 
-f.borrarInstrumento("125AA")
 
+#Punto A
+print("LISTADO DE TODOS LOS INSTRUMENTOS")
 f.listarInstrumentos()
+print("========================")
 
+#Punto B
+print("INSTRUMENTOS POR TIPO")
+f.instrumentosPorTipo(TipoInstrumento.CAT3.value)
+print("========================")
+
+#Punto C
+print("Se borra el instrumento id: 125AA")
+f.borrarInstrumento("125AA")
+print("========================")
+f.listarInstrumentos()
+print("========================")
+
+#Punto D
+print("PORCENTAJE POR TIPOS")
 f.porcPorTiposInstrumento("Sucursal 1")
