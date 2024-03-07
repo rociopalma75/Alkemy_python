@@ -59,9 +59,11 @@ class Sucursal():
             else:
                 contadorPercusion += 1
         
-        print(f'Porcentaje de Viento: %{(contadorViento/cantidadInstrumentos)*100}')
-        print(f'Porcentaje de Cuerda: %{(contadorCuerda/cantidadInstrumentos)*100}')
-        print(f'Porcentaje de Percusion: %{(contadorPercusion/cantidadInstrumentos)*100}')
+        porc = lambda a : (a/cantidadInstrumentos)*100
+
+        print(f'Porcentaje de Viento: %{porc(contadorViento)}')
+        print(f'Porcentaje de Cuerda: %{porc(contadorCuerda)}')
+        print(f'Porcentaje de Percusion: %{porc(contadorPercusion)}')
 
 class Instrumento():
     def __init__(self, id, precio, tipo):
