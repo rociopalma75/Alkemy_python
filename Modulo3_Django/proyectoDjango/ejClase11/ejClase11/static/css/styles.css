@@ -1,0 +1,19 @@
+body{
+    background-image: url("../img/fondo.jpg");
+}
+
+h1, h2, h4{
+    color: #ffffff;
+    text-align: center;
+}
+
+
+p{
+    color: #000000;
+    text-align: center;
+}
+
+.contenedor{
+    display: flex;
+    justify-content: center;
+}
